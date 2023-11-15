@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~16.2.10",
     "@angular/platform-browser-dynamic": "~16.2.10",
     "@angular/router": "~16.2.10",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
     "add": "^2.0.6",
     "ng": "^0.0.0",
     "rxjs": "~7.5.0",
