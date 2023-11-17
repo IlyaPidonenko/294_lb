@@ -11,7 +11,7 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
   declarations: [
     CategoryListComponent,
     CategoryModifyComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
   ],
   imports: [
     CommonModule,

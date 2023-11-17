@@ -1,19 +1,39 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {RegisterDto, UserControllerService} from "../../../openapi-client";
+import {MatInputModule} from "@angular/material/input";
+
 
 @Component({
   selector: 'pm-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, FormsModule, ReactiveFormsModule, MatInputModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  private formGroup: any;
+  formGroup!: FormGroup;
 
-  logForm() {
-    console.log(this.formGroup.value);
+
+  constructor(private fb: FormBuilder,
+              private userService: UserControllerService) {
+    this.formGroup = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+  }
+
+  logform(){
+    console.log(this.formGroup);
+    console.log(this.formGroup.errors);
+    if(this.formGroup.valid) {
+      this.userService.login(this.formGroup.value as RegisterDto).subscribe(token=> {
+        console.log(token)
+        localStorage.setItem('ACCESS_TOKEN', token.token as string);
+        alert('erfolgreich eingeloggt');
+      })
+    }
   }
 }
