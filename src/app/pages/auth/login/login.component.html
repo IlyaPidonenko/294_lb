@@ -1,3 +1,5 @@
+<!-- login.component.html -->
+
 <form [formGroup]="formGroup" (ngSubmit)="logform()">
   <mat-card>
     <mat-card-header>
@@ -5,14 +7,17 @@
     </mat-card-header>
     <br>
     <mat-card-content>
+      <!-- Email input field -->
       <label>Email</label>
       <input type="email" placeholder="Type your Email" formControlName="email">
     </mat-card-content>
     <mat-card-content>
+      <!-- Password input field -->
       <label>Password</label>
       <input type="text" placeholder="Type your password" formControlName="password">
     </mat-card-content>
     <mat-card-actions class="flex flex-row just-center gap-1">
+      <!-- Login button triggering form submission -->
       <button mat-button mat-raised-button color="primary" type="submit" >Anmelden</button>
     </mat-card-actions>
   </mat-card>

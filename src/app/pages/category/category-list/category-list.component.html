@@ -1,16 +1,27 @@
 <!-- category-list.component.html -->
+
+<!-- Display all categories if there are any, otherwise show a message. -->
 <div *ngIf="categories.length > 0 else noCategories">
+  <!-- Heading for the section displaying all categories. -->
   <h2>All Categories</h2>
+
+  <!-- List to display each category. -->
   <ul>
+    <!-- Iterate through each category and display its details. -->
     <li *ngFor="let category of categories">
+      <!-- Container for each category item with styling. -->
       <div class="category-item">
+        <!-- Heading for the category name. -->
         <h3>{{ category.categoryName }}</h3>
+        <!-- Paragraph for the category description. -->
         <p>{{ category.description }}</p>
       </div>
     </li>
   </ul>
 </div>
 
+<!-- Template to display a message when there are no categories. -->
 <ng-template #noCategories>
+  <!-- Message indicating that there are no categories available. -->
   <p>No categories available.</p>
 </ng-template>

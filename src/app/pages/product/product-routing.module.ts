@@ -1,3 +1,5 @@
+// product-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductModifyComponent } from './product-modify/product-modify.component';
@@ -7,24 +9,27 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 const routes: Routes = [
   {
     path: 'product-list',
-    component: ProductListComponent
+    component: ProductListComponent,
   },
   {
     path: 'product-modify',
-    component: ProductModifyComponent
+    component: ProductModifyComponent,
   },
   {
     path: 'edit/:id',
-    component: ProductModifyComponent
+    component: ProductModifyComponent,
   },
   {
-    path: ":id",
-    component: ProductDetailComponent
-  }
+    path: ':id',
+    component: ProductDetailComponent,
+  },
 ];
 
+/**
+ * The module to handle routing for the product-related components.
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProductRoutingModule { }
+export class ProductRoutingModule {}

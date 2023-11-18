@@ -1,9 +1,13 @@
+// register.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatInputModule} from "@angular/material/input";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {RegisterDto, UserControllerService} from "../../../openapi-client";
+import { MatInputModule } from "@angular/material/input";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { RegisterDto, UserControllerService } from "../../../openapi-client";
 
+/**
+ * Component for user registration.
+ */
 @Component({
   selector: 'pm-register',
   standalone: true,
@@ -12,10 +16,18 @@ import {RegisterDto, UserControllerService} from "../../../openapi-client";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  /**
+   * Form group for the registration form.
+   */
   formGroup!: FormGroup;
 
-  constructor(private fb: FormBuilder,
-              private userService: UserControllerService) {
+  /**
+   * Constructs the RegisterComponent.
+   * @param fb FormBuilder for creating the registration form.
+   * @param userService Service for user-related actions.
+   */
+  constructor(private fb: FormBuilder, private userService: UserControllerService) {
+    // Initialize the registration form with form controls and validators.
     this.formGroup = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
       lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
@@ -30,14 +42,19 @@ export class RegisterComponent {
     })
   }
 
+  /**
+   * Handles the submission of the registration form.
+   * If the form is valid, registers the user using the userService,
+   * displays a success message, and logs the form data.
+   */
   submit() {
     console.log(this.formGroup);
     console.log(this.formGroup.errors);
     if (this.formGroup.valid) {
+      // Get the values from the form and send them to the server for registration.
       this.userService.register(this.formGroup.value as RegisterDto).subscribe(val => {
-        alert('erfolgreich registriert');
+        alert('Successfully registered');
       })
     }
   }
 }
-

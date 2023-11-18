@@ -1,45 +1,69 @@
+<!-- register.component.html -->
+
 <div class="form-box">
+  <!-- Registration form with Angular reactive form directives -->
   <form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <!-- Form field for user's first name -->
     <mat-form-field>
       <label>Name</label>
       <input matInput type="text" formControlName="firstName">
     </mat-form-field>
+
+    <!-- Form field for user's last name -->
     <mat-form-field>
-      <label>Nachname</label>
-      <input  matInput type="text" formControlName="lastName">
+      <label>Last Name</label>
+      <input matInput type="text" formControlName="lastName">
     </mat-form-field>
+
+    <!-- Form field for user's street address -->
     <mat-form-field>
-      <label>Strasse</label>
+      <label>Street</label>
       <input matInput type="text" formControlName="street">
     </mat-form-field>
+
+    <!-- Form field for user's postal code -->
     <mat-form-field>
-      <label>Postleitzahl</label>
-      <input  matInput type="text" formControlName="zip">
+      <label>Postal Code</label>
+      <input matInput type="text" formControlName="zip">
     </mat-form-field>
+
+    <!-- Form field for user's city -->
     <mat-form-field>
-      <label>Stadt</label>
+      <label>City</label>
       <input matInput type="text" formControlName="city">
     </mat-form-field>
+
+    <!-- Form field for user's country -->
     <mat-form-field>
-      <label>Land</label>
+      <label>Country</label>
       <input matInput type="text" formControlName="country">
     </mat-form-field>
+
+    <!-- Form field for user's mobile phone -->
     <mat-form-field>
-      <label>Mobiltelefon</label>
+      <label>Mobile Phone</label>
       <input matInput type="text" formControlName="mobilePhone">
     </mat-form-field>
+
+    <!-- Form field for user's phone -->
     <mat-form-field>
-      <label>Telefon</label>
+      <label>Phone</label>
       <input matInput type="text" formControlName="phone">
     </mat-form-field>
+
+    <!-- Form field for user's email address -->
     <mat-form-field>
-      <label>EMail-Adresse</label>
+      <label>Email Address</label>
       <input matInput type="text" formControlName="email">
     </mat-form-field>
+
+    <!-- Form field for user's password -->
     <mat-form-field>
-      <label>Passwort</label>
-      <input  matInput type="password" formControlName="password">
+      <label>Password</label>
+      <input matInput type="password" formControlName="password">
     </mat-form-field>
-    <button type="submit">Speichern</button>
+
+    <!-- Submit button to save the registration form -->
+    <button type="submit">Save</button>
   </form>
-  </div>
+</div>
