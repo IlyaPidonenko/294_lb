@@ -25,15 +25,21 @@ export class LoginComponent {
     });
   }
 
-  logform(){
+  logform() {
     console.log(this.formGroup);
-    console.log(this.formGroup.errors);
-    if(this.formGroup.valid) {
-      this.userService.login(this.formGroup.value as RegisterDto).subscribe(token=> {
-        console.log(token)
-        localStorage.setItem('ACCESS_TOKEN', token.token as string);
-        alert('erfolgreich eingeloggt');
-      })
+    if (this.formGroup.valid) {
+      this.userService.login(this.formGroup.value as RegisterDto).subscribe(
+        (token) => {
+          console.log(token);
+          localStorage.setItem('ACCESS_TOKEN', token.token as string);
+          alert('Successfully logged in');
+        },
+        (error) => {
+          console.error('Login failed:', error);
+          // Handle error (e.g., display an error message)
+          alert('Login failed');
+        }
+      );
     }
   }
 }

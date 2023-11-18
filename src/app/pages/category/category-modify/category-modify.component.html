@@ -1,2 +1,17 @@
-<p>category-modify works!</p>
+<!-- category-modify.component.html -->
 
+<form [formGroup]="categoryForm" (ngSubmit)="submitCategory()">
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <label for="categoryName">Category Name:</label>
+  <input type="text" id="categoryName" formControlName="categoryName">
+
+  <label for="description">Description:</label>
+  <textarea id="description" formControlName="description"></textarea>
+
+  <!-- Add more input fields as needed -->
+
+  <button type="submit">Submit</button>
+</form>

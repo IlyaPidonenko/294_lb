@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ApiModule, Configuration} from "./openapi-client";
 import {AuthorizationInterceptor} from "./interceptors/authorization.interceptor";
 
+
 @NgModule({
   declarations: [
     AppComponent,

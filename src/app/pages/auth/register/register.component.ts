@@ -17,26 +17,27 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder,
               private userService: UserControllerService) {
     this.formGroup = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
-      surname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
-      adress: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      street: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
       zip: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
       city: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
       country: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
-      tel: ['', [Validators.minLength(0), Validators.maxLength(15)]],
+      mobilePhone: ['', [Validators.minLength(0), Validators.maxLength(15)]],
       phone: ['', [Validators.minLength(0), Validators.maxLength(15)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
-    });
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$')]]
+    })
   }
 
   submit() {
     console.log(this.formGroup);
     console.log(this.formGroup.errors);
     if (this.formGroup.valid) {
-      this.userService.register(this.formGroup.value as RegisterDto).subscribe(valu => {
-        alert('erfolgreich eingeloggt');
+      this.userService.register(this.formGroup.value as RegisterDto).subscribe(val => {
+        alert('erfolgreich registriert');
       })
     }
   }
 }
+

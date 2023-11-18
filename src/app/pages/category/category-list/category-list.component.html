@@ -1,1 +1,16 @@
-<p>category-list works!</p>
+<!-- category-list.component.html -->
+<div *ngIf="categories.length > 0 else noCategories">
+  <h2>All Categories</h2>
+  <ul>
+    <li *ngFor="let category of categories">
+      <div class="category-item">
+        <h3>{{ category.categoryName }}</h3>
+        <p>{{ category.description }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noCategories>
+  <p>No categories available.</p>
+</ng-template>
